@@ -18,12 +18,14 @@ def test():
     ocr_url = endpoint + "vision/v3.0/ocr"
 
     # Set image_url to the URL of an image that you want to analyze.
-    image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
+    # image_url = "https://lh3.googleusercontent.com/76JllPseCL9WHnBt8bBkA8FaraCi3iEDHDK7-oTi4qN2L5tSy3sYli_3zwoakbCGNcAm_FoB26kDVwmKcVlb9I2f_faFM-iqe9d-20uGg8qI5Deq-XCHltEzBj4EtU2CcMroFwZQ5G0=w600-h315-p-k"
+    image_url = "./Capture.PNG"
 
-    headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+    image_data = open(image_url, "rb").read()
+
+    headers = {'Content-Type': 'application/octet-stream', 'Ocp-Apim-Subscription-Key': subscription_key}
     params = {'language': 'en', 'detectOrientation': 'true'}
-    data = {'url': image_url}
-    response = requests.post(ocr_url, headers=headers, params=params, json=data)
+    response = requests.post(ocr_url, headers=headers, params=params, data=image_data)
     response.raise_for_status()
 
     analysis = response.json()
