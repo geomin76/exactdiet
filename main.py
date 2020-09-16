@@ -13,12 +13,9 @@ endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 def world():
     return "Hello World!"
 
-@app.route('/test')
+@app.route('/analyze')
 def test():
     ocr_url = endpoint + "vision/v3.0/ocr"
-
-    # Set image_url to the URL of an image that you want to analyze.
-    # image_url = "https://lh3.googleusercontent.com/76JllPseCL9WHnBt8bBkA8FaraCi3iEDHDK7-oTi4qN2L5tSy3sYli_3zwoakbCGNcAm_FoB26kDVwmKcVlb9I2f_faFM-iqe9d-20uGg8qI5Deq-XCHltEzBj4EtU2CcMroFwZQ5G0=w600-h315-p-k"
     image_url = "./Capture.PNG"
 
     image_data = open(image_url, "rb").read()
