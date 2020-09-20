@@ -34,6 +34,3 @@ def test():
             res.append(s)
     print(res)
     return "woo"
-
-# if __name__ == '__main__':
-#     app.run()
