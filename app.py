@@ -1,8 +1,8 @@
-import os
-import sys
-import requests
+# import os
+# import sys
+# import requests
 from flask import Flask
-import json
+# import json
 
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ app = Flask(__name__)
 # endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
 @app.route('/')
-def world():
+def hello():
     return "Hello World!"
 
 # @app.route('/analyze')
@@ -35,5 +35,5 @@ def world():
 #     print(res)
 #     return "woo"
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()

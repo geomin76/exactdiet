@@ -2,3 +2,4 @@ venv/
 .serverless/
 *.pyc
 __pycache__/
+node_modules/
