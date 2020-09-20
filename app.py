@@ -1,7 +1,7 @@
 import os
 import sys
 import requests
-from flask import Flask
+from flask import Flask, request
 import json
 
 app = Flask(__name__)
@@ -14,9 +14,10 @@ def hello():
     return "Hello World!"
 
 @app.route('/analyze')
-def test():
+def analyze():
+    image_url = str(request.args.get('url'))
+
     ocr_url = endpoint + "vision/v3.0/ocr"
-    image_url = "./Capture.PNG"
 
     image_data = open(image_url, "rb").read()
 
@@ -34,3 +35,7 @@ def test():
             res.append(s)
     print(res)
     return "woo"
+
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5000, debug=True)
