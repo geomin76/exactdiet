@@ -36,8 +36,7 @@ def analyze():
         'headers': {
             'Access-Control-Allow-Headers':  "Origin, X-Requested-With, Content-Type, Accept, Authorization",
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
-            "Access-Control-Allow-Credentials" : True
+            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
         'body': json.dumps({'data': str(output)})
     }
