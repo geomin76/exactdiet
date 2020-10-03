@@ -2,19 +2,35 @@ import os
 import sys
 from flask import Flask, request
 import json
+import os
+import base64
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def hello():
     return "Hello World!"
 
-@app.route('/analyze')
-def test():
-    stream = os.popen('./tesseract ok.jpg stdout -l eng')
+@app.route('/analyze', methods=['GET', 'POST'])
+@cross_origin()
+def analyze():
+    encoded_string = request.json["data"]
+    # print(request.json["data"])
+
+    imgdata = base64.b64decode(encoded_string)
+    filename = 'img.jpg'
+    with open(filename, 'wb') as f:
+        f.write(imgdata)
+    
+    stream = os.popen('./tesseract img.jpg stdout -l eng')
     output = stream.read()
     print(output)
-    return "ok"
+    os.remove('img.jpg')
+
+    return json.dumps({'data': str(output)})
 
 
 if __name__ == '__main__':
