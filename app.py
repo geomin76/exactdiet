@@ -7,8 +7,8 @@ import base64
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-# cors = CORS(app)
-cors = CORS(app, resources={r"/analyze": {"origins": "https://gy0s1wfur7.execute-api.us-east-1.amazonaws.com/dev/"}})
+cors = CORS(app)
+# cors = CORS(app, resources={r"/analyze": {"origins": "https://gy0s1wfur7.execute-api.us-east-1.amazonaws.com/dev/"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
@@ -34,7 +34,7 @@ def analyze():
     return {
         'statusCode': 200,
         'headers': {
-            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Headers':  "Origin, X-Requested-With, Content-Type, Accept, Authorization",
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
