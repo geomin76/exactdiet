@@ -16,7 +16,7 @@ def hello():
     return "Hello World!"
 
 @app.route('/analyze', methods=['GET', 'POST'])
-@cross_origin()
+@cross_origin(origin='*')
 def analyze():
     encoded_string = request.json["data"]
     # print(request.json["data"])
@@ -31,15 +31,17 @@ def analyze():
     print(output)
     os.remove('img.jpg')
 
-    return {
-        'statusCode': 200,
-        'headers': {
-            'Access-Control-Allow-Headers':  "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
-        },
-        'body': json.dumps({'data': str(output)})
-    }
+    # return {
+    #     'statusCode': 200,
+    #     'headers': {
+    #         'Access-Control-Allow-Headers':  "*",
+    #         'Access-Control-Allow-Origin': '*',
+    #         'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+    #     },
+    #     'body': json.dumps({'data': str(output)})
+    # }
+
+    return json.dumps({'data': str(output)})
 
 
 if __name__ == '__main__':
