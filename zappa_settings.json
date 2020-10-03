@@ -5,6 +5,6 @@
         "project_name": "exactdiet",
         "runtime": "python3.6",
         "s3_bucket": "zappa-sfnx1cp5t",
-        "cors": "true"
+        "cors": true
     }
 }
