@@ -26,7 +26,7 @@ def analyze():
     with open(filename, 'wb') as f:
         f.write(imgdata)
     
-    stream = os.popen('./tesseract /tmp/img.jpg stdout -l eng')
+    stream = os.popen('./tesseract/tesseract /tmp/img.jpg stdout -l eng')
     output = stream.read()
     print(output)
     os.remove('/tmp/img.jpg')
