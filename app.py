@@ -40,8 +40,8 @@ def analyze():
     #     },
     #     'body': json.dumps({'data': str(output)})
     # }
-
-    return json.dumps({'data': str(output)})
+    
+    return json.dumps({'data': output})
 
 
 if __name__ == '__main__':
