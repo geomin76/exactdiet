@@ -1,6 +1,6 @@
 import os
 import sys
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import requests
 import json
 import os
@@ -51,9 +51,11 @@ def analyze():
     os.remove('/tmp/img.png')
 
     vals = " ".join(res)
+    print(vals)
+    print(jsonify(words=vals))
     
     # return json.dumps({ 'data': vals })
-    return vals
+    return jsonify(words=vals)
 
 
 if __name__ == '__main__':
