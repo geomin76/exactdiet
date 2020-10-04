@@ -22,14 +22,14 @@ def analyze():
     # print(request.json["data"])
 
     imgdata = base64.b64decode(encoded_string)
-    filename = 'img.jpg'
+    filename = '/tmp/img.jpg'
     with open(filename, 'wb') as f:
         f.write(imgdata)
     
-    stream = os.popen('./tesseract img.jpg stdout -l eng')
+    stream = os.popen('./tesseract /tmp/img.jpg stdout -l eng')
     output = stream.read()
     print(output)
-    os.remove('img.jpg')
+    os.remove('/tmp/img.jpg')
 
     # return {
     #     'statusCode': 200,
@@ -41,7 +41,7 @@ def analyze():
     #     'body': json.dumps({'data': str(output)})
     # }
     
-    return json.dumps({'data': output})
+    return json.dumps({'data': str(output)})
 
 
 if __name__ == '__main__':
