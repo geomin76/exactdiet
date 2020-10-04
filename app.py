@@ -49,8 +49,11 @@ def analyze():
     print(res)
 
     os.remove('/tmp/img.png')
+
+    vals = " ".join(res)
     
-    return json.dumps({ 'data': " ".join(res) })
+    # return json.dumps({ 'data': vals })
+    return vals
 
 
 if __name__ == '__main__':
