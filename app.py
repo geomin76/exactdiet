@@ -7,8 +7,8 @@ import os
 import base64
 from flask_cors import CORS, cross_origin
 
-from classifier import *
-from service import *
+# from classifier import *
+import service
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -23,7 +23,7 @@ def hello():
 def analyze():
     encoded_string = request.json["data"]
 
-    vals = ocr(encoded_string)
+    vals = service.ocr(encoded_string)
     
     return jsonify(words=vals)
 

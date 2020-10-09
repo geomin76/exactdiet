@@ -7,7 +7,6 @@ import base64
 
 from classifier import *
 
-
 subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
 endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
